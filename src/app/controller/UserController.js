@@ -1,4 +1,3 @@
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import User from '../models/User';
 
 class UserController {
