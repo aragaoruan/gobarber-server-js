@@ -18,6 +18,7 @@ class User extends Model {
 
     this.addHook('beforeSave', async user => {
       if (user.password) {
+        // eslint-disable-next-line no-param-reassign
         user.password_hash = await bcrypt.hash(user.password, 8);
       }
     });
@@ -26,7 +27,7 @@ class User extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.File, { foreignKey: 'avatar_id' });
+    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
   }
 
   checkPasssword(password) {
