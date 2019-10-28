@@ -31,6 +31,13 @@ class ScheduleController {
         canceled_at: null,
         date: { [Op.between]: [startOfDay(parDate), endOfDay(parDate)] },
       },
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: ['name'],
+        },
+      ],
       order: ['date'],
     });
 
